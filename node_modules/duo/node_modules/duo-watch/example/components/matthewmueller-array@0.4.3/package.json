@@ -1,0 +1,30 @@
+{
+  "name": "array",
+  "version": "0.4.3",
+  "description": "a vocal, functional array",
+  "main": "array.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MatthewMueller/array.git"
+  },
+  "keywords": [
+    "array",
+    "functional",
+    "vocal",
+    "enumerable"
+  ],
+  "author": "matthew mueller",
+  "license": "MIT",
+  "readmeFilename": "Readme.md",
+  "dependencies": {
+    "emitter-component": "~1.1.0",
+    "to-function": "~1.2.1"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "better-assert": "*"
+  }
+}

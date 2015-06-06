@@ -1,0 +1,216 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require('commander');
+var fmt = require('util').format;
+var join = require('path').join;
+var archy = require('archy');
+var bytes = require('bytes');
+
+/**
+ * Program.
+ */
+
+program
+  .usage('duo duplicates')
+  .parse(process.argv);
+
+/**
+ * Help.
+ */
+
+program.on('--help', function () {
+  console.log('Examples:');
+  console.log();
+  console.log('  #');
+  console.log('  # show all duplicates, their version');
+  console.log('  # and who they belong to');
+  console.log('  #');
+  console.log();
+  console.log('  $ duo duplicates');
+  console.log();
+  console.log('    - component-clone (0.0.1, 0.1.1)');
+  console.log('    | - org-pkg-a uses 0.1.1');
+  console.log('    | - org-pkg-b uses 0.0.1');
+  console.log();
+});
+
+/**
+ * Read component.json and mapping.json.
+ */
+
+try {
+  var cwd = process.cwd();
+  var map = require(join(cwd, 'components', 'duo.json'));
+  var component = require(join(cwd, 'component.json'));
+  var root = Object.keys(map)[0];
+} catch (e) {
+  console.error();
+  console.error(e);
+  console.error();
+  process.exit(1);
+}
+
+/**
+ * All duplicates.
+ */
+
+var dupes = duplicates(map);
+
+/**
+ * Show total bytes saved if duplicates are removed.
+ */
+
+console.log();
+console.log('  \033[36mtotal duplicates\033[m : \033[90m%s\033[m', bytes(total(dupes)));
+
+/**
+ * Duplicates.
+ */
+
+console.log(archy({ nodes: dupes }, '  '));
+
+// Exit with 1 on duplicates
+if (dupes.length) process.exit(1);
+
+/**
+ * Get all duplicates.
+ *
+ * @param {Object} map
+ * @return {Object}
+ */
+
+function duplicates(map) {
+  var pkgs = Object.keys(map);
+  var dupes = {};
+  var ret = [];
+
+  // get all duplicates, get total size.
+  pkgs.forEach(function (id) {
+    var name = normalize(id);
+    var parts = name.split('@');
+    var repo = parts.shift();
+    var version = parts.shift();
+    var node = dupes[repo] = dupes[repo] || {};
+    var src = map[id].src;
+    node.versions = node.versions || [];
+    node.ids = node.ids || [];
+
+    if (!version) return;
+    if (~node.versions.indexOf(version)) return;
+
+    node.repo = repo;
+    node.ids.push(id);
+    node.versions.push(version);
+    var length = size(id, map);
+    node.size = (node.size || 0) + length;
+    node.nodes = [];
+  });
+
+  // add nodes.
+  return values(dupes)
+    .filter(Function('_', 'return 1 < _.versions.length'))
+    .sort(Function('a, b', 'return b.size - a.size'))
+    .map(label)
+    .map(users);
+
+  // Set the label.
+  function label(node) {
+    var revs = node.versions.join(', ');
+    var size = bytes(node.size);
+    node.label = fmt('\033[36m%s - (%s) - %s\033[m', node.repo, revs, size);
+    return node;
+  }
+
+  // get all users
+  function users(node) {
+    pkgs.forEach(function (id) {
+      var deps = values(map[id].deps);
+      deps.forEach(function (dep) {
+        if (!~node.ids.indexOf(dep)) return;
+        var nodes = node.nodes = node.nodes || [];
+        id = normalize(id);
+        var str = '\033[90m' + id + ' uses ' + version(dep) + '\033[m';
+        if (!~nodes.indexOf(str)) nodes.push(str);
+      });
+    });
+
+    return node;
+  }
+}
+
+/**
+ * Get size of `id` using `map`.
+ *
+ * @parma {String} id
+ * @param {Object} map
+ * @return {Number}
+ */
+
+function size(id, map) {
+  var deps = map[id].deps;
+  var src = map[id].src;
+  var length = Buffer.byteLength(src);
+  var visited = {};
+
+  for (var dep in deps) {
+    if ('.' != dep[0]) continue;
+    if (visited[dep]) continue;
+    visited[dep] = true;
+    length += Buffer.byteLength(map[deps[dep]].src);
+  }
+
+  return length;
+}
+
+/**
+ * Get version of `dep`.
+ *
+ * @return {String}
+ */
+
+function version(dep) {
+  var repo = dep.split('/')[1];
+  if (!repo) return dep;
+  return repo.split('@')[1];
+}
+
+/**
+ * Normalize key.
+ *
+ * @param {String} key
+ * @return {String}
+ */
+
+function normalize(key) {
+  return key.split('/')[1] || key;
+}
+
+/**
+ * Get total bytes of all `dupes`.
+ *
+ * @param {Array} dupes
+ * @return {Number} n
+ */
+
+function total(dupes) {
+  return dupes.reduce(function (t, d) {
+    return t += d.size - d.size / d.versions.length;
+  }, 0);
+}
+
+/**
+ * Values.
+ *
+ * @param {Object} obj
+ * @return {Array}
+ */
+
+function values(obj) {
+  var ret = [];
+  for (var k in obj) ret.push(obj[k]);
+  return ret;
+}

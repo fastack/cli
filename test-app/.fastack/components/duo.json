@@ -1,0 +1,79 @@
+{
+  ".fastack/root.js": {
+    "id": ".fastack/root.js",
+    "type": "js",
+    "mtime": 1433272761000,
+    "src": "require('live-reload')\nrequire('entry')\n",
+    "deps": {
+      "live-reload": "live-reload",
+      "entry": "entry"
+    },
+    "entry": true
+  },
+  "live-reload": {
+    "id": "live-reload",
+    "src": "(function(){\n  // Inject socket.io client script (served by local server)\n  var liveReload = document.createElement('script');\n  liveReload.setAttribute('src','/socket.io/socket.io.js');\n  document.head.appendChild(liveReload);\n\n\n  liveReload.onload = function() {\n    var socket = io(window.location.origin);\n\n    socket.on('reload-page', function() {\n      location.reload();\n    })\n\n    socket.on('reload-css', function() {\n      // https://github.com/dbashford/mimosa-live-reload/blob/master/lib/assets/reload-client.js\n      setTimeout(function(){\n        var links = document.getElementsByTagName(\"link\");\n        for (var i = 0; i < links.length; i++) {\n          var tag = links[i];\n          if (tag.rel.toLowerCase().indexOf(\"stylesheet\") >= 0 && tag.href) {\n            var newHref = tag.href.replace(/(&|%5C?)\\d+/, \"\");\n            tag.href = newHref + (newHref.indexOf(\"?\") >= 0 ? \"&\" : \"?\") + (new Date().valueOf());\n          }\n        }\n      }, 150)\n    })\n  }\n\n})();\n",
+    "entry": false,
+    "include": true,
+    "deps": {}
+  },
+  "entry": {
+    "id": "entry",
+    "src": "var uid = require('matthewmueller/uid');\n//\n// // alert('hello');\n",
+    "entry": false,
+    "include": true,
+    "deps": {}
+  },
+  "root.css": {
+    "id": "root.css",
+    "type": "css",
+    "mtime": 1433272381000,
+    "src": "@import 'css/test.less';\n\nbody {\n  border: 5px solid blue;\n  padding: 30px;\n}\n",
+    "deps": {
+      "css/test.less": "css/test.less"
+    },
+    "entry": true
+  },
+  "css/test.less": {
+    "id": "css/test.less",
+    "type": "css",
+    "mtime": 1433110069000,
+    "src": "p {\n  font-size: 1em;\n}\n",
+    "deps": {}
+  },
+  "source.js": {
+    "id": "source.js",
+    "type": "js",
+    "mtime": 1433562868451,
+    "src": "require('live-reload')\nvar uid = require('matthewmueller/uid');\n\n// alert(uid());\n",
+    "deps": {
+      "live-reload": "live-reload",
+      "matthewmueller/uid": ".fastack/components/matthewmueller-uid@0.0.2/index.js"
+    },
+    "entry": true
+  },
+  ".fastack/components/matthewmueller-uid@0.0.2/index.js": {
+    "id": ".fastack/components/matthewmueller-uid@0.0.2/index.js",
+    "type": "js",
+    "mtime": 1373931414000,
+    "src": "/**\n * Export `uid`\n */\n\nmodule.exports = uid;\n\n/**\n * Create a `uid`\n *\n * @param {String} len\n * @return {String} uid\n */\n\nfunction uid(len) {\n  len = len || 7;\n  return Math.random().toString(35).substr(2, len);\n}\n",
+    "deps": {}
+  },
+  "fastack-dev": {
+    "id": "fastack-dev",
+    "src": "require('live-reload')\n",
+    "entry": false,
+    "include": true,
+    "deps": {}
+  },
+  "main.css": {
+    "id": "main.css",
+    "type": "css",
+    "mtime": 1433359597000,
+    "src": "@import 'css/test.less';\n\nbody {\n  border: 5px solid blue;\n  padding: 30px;\n}\n",
+    "deps": {
+      "css/test.less": "css/test.less"
+    },
+    "entry": true
+  }
+}

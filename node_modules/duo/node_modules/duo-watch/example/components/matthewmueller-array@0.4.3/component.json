@@ -1,0 +1,19 @@
+{
+  "name": "array",
+  "repo": "matthewmueller/array",
+  "description": "a better array",
+  "version": "0.4.3",
+  "keywords": [],
+  "dependencies": {
+    "component/emitter": "*",
+    "component/to-function": "1.2.1",
+    "yields/isArray": "1.0.0"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js",
+    "lib/array.js",
+    "lib/enumerable.js"
+  ]
+}

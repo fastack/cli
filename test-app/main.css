@@ -1,0 +1,6 @@
+@import 'css/test.less';
+
+body {
+  border: 5px solid blue;
+  padding: 30px;
+}

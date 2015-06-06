@@ -1,0 +1,15 @@
+{
+	"token": "nxGxGuJaxaePYQyCQ",
+
+	"routes": {
+		"/contact": "pages/contact.html"
+	},
+
+	"redirects": {
+		"/google": "http://google.com/"
+	},
+
+	"local": {
+		"port": 8080
+	}
+}

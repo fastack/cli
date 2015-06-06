@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>Query</title>
+</head>
+<body>
+  <ul>
+    <li>one</li>
+    <li>two</li>
+    <li>three</li>
+  </ul>
+
+  <script src="build/build.js"></script>
+  <script>
+    var query = require('query');
+    console.log(query('ul > li'));
+    console.log(query.all('ul > li'));
+  </script>
+</body>
+</html>
