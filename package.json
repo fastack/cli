@@ -27,6 +27,8 @@
     "cli-table": "^0.3.1",
     "commander": "^2.3.0",
     "duo": "^0.11.4",
+    "duo-coffee-script": "0.0.2",
+    "duo-jade": "0.0.6",
     "duo-less": "0.0.2",
     "fs-extra": "^0.18.4",
     "lodash": "^3.9.3",
