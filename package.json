@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/fastack/fastack.git"
+    "url": "https://github.com/fastack/cli.git"
   },
   "preferGlobal": true,
   "dependencies": {
@@ -27,9 +27,12 @@
     "cli-table": "^0.3.1",
     "commander": "^2.3.0",
     "duo": "^0.11.4",
+    "duo-6to5": "^3.0.0",
+    "duo-autoprefixer": "^1.1.0",
     "duo-coffee-script": "0.0.2",
     "duo-jade": "0.0.6",
     "duo-less": "0.0.2",
+    "duo-stylus": "^0.1.0",
     "fs-extra": "^0.18.4",
     "lodash": "^3.9.3",
     "minimatch": "^2.0.1",
