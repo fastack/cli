@@ -1,6 +1,4 @@
 {
-	"token": "nxGxGuJaxaePYQyCQ",
-
 	"routes": {
 		"/contact": "pages/contact.html"
 	},

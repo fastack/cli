@@ -1,6 +1,11 @@
-p {
-  font-size: 1em;
+body {
+  border-radius: 10px;
 }
+body p {
+  font-size: 1em;
+  weird: 1em;
+}
+
 
 
 body {
