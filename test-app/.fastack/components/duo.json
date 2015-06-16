@@ -12,20 +12,16 @@
   "css/test.less": {
     "id": "css/test.less",
     "type": "css",
-    "mtime": 1433881383000,
+    "mtime": 1434117803000,
     "src": "body {\n  border-radius: 10px;\n}\nbody p {\n  font-size: 1em;\n  weird: 1em;\n}\n",
     "deps": {}
   },
   "source.js": {
     "id": "source.js",
     "type": "js",
-    "mtime": 1433881563383,
-    "src": "require('live-reload')\nvar uid = require('matthewmueller/uid');\n\n// alert(uid());\nrequire('./test.coffee')\n\n// var evens = [2, 4, 6, 8, 10, 12]\n// var odds = evens.map(v => v + 1);\n// console.log(odds)\n",
-    "deps": {
-      "live-reload": "live-reload",
-      "matthewmueller/uid": ".fastack/components/matthewmueller-uid@0.0.2/index.js",
-      "./test.coffee": "test.coffee"
-    },
+    "mtime": 1434164826126,
+    "src": "main.js",
+    "deps": {},
     "entry": true
   },
   ".fastack/components/matthewmueller-uid@0.0.2/index.js": {
@@ -81,5 +77,13 @@
     "mtime": 1433880975000,
     "src": "body {\n  margin-top: 100px;\n}\n",
     "deps": {}
+  },
+  "source.css": {
+    "id": "source.css",
+    "type": "css",
+    "mtime": 1434164826128,
+    "src": "main.css",
+    "deps": {},
+    "entry": true
   }
 }
