@@ -1,1 +1,2 @@
-console.log('Hello World from test-lib!')
+require('./main.js');
+console.log('From test-lib!');
