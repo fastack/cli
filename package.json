@@ -46,9 +46,5 @@
     "fastack": "./bin/fastack"
   },
   "main": "./lib/fastack",
-  "scripts": {},
-  "engines": {
-    "node": ">= 0.12.0"
-  },
   "license": "MIT"
 }
