@@ -28,3 +28,9 @@ $ fastack
 fastack:my-app $ init
 ```
 
+## Coming Soon
+- Hot code reload
+- Application export
+- Fastack deploy
+- LESS support
+- TypeScript support
