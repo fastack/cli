@@ -1,4 +1,4 @@
-# Fastack
+# Fastack ![npm version](https://img.shields.io/npm/v/fastack.svg)
 Fastack is a zero-configuration development tool that makes developing client-side-only apps easy. Run `$ fastack` in your app directory to automatically enable the following features.
 
 ## Features
