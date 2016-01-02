@@ -1,34 +1,29 @@
 # Fastack
-Fastack is a zero-configuration development tool that makes building client-side-only apps a breeze. Run `$ fastack` in your app directory to automatically enable the following features.
+Fastack is a zero-configuration development tool that makes developing client-side-only apps easy. Run `$ fastack` in your app directory to automatically enable the following features.
 
 ## Features
-### Easy package management
-Fastack uses DuoJS to manage front-end dependencies. Simply `require` a library or file to use.
+### Easy module loading
+- Every file in your app directory is implicitly loaded into your Fastack application. Just drop `main.coffee`, `styles.sass` or `my-code.js` somewhere into your app directory and Fastack will load it.
+- Need to install a dependency? `fastack:my-app $ install jquery` will install modules from JSPM
 
-- Use a local javascript file `require('./local-file.js')`
-- Use a package on github `require('matthewmueller/uid')`
-- Use a local CSS file  `@import local-file.css`
-- Use some CSS on github `@import 'necolas/normalize.css'`
-- JSON and HTML can also be require'd into your code: `require('./options.json')`
 
-More information on using DuoJS packages can be found here: [http://duojs.org/](http://duojs.org/)
 
 ### Pre-compiler support
-- LESS CSS
+- SASS
 - CoffeeScript
 
-Pre-compiled languages are detetected and automatically compiled and delivered.
 
-### Source mapping
-Inline source maps are generated in development mode.
-
-### Live reload
-Live reloading is automatically inserted into your application. Full page reloads when javascript, html or configurations are change, only CSS is refreshed when styles are changed.
-
-
-## Installation
+## Quickstart
 ```
 $ npm install -g fastack
 ```
 
-## Getting Started
+Fastack is an immersive command line application. Running `$ fastack` will drop you into a new prompt with a number of sub-commands available. Run `help` in the Fastack prompt for more information.
+
+```
+$ mkdir my-app
+$ cd my-app
+$ fastack
+fastack:my-app $ init
+```
+
