@@ -6,6 +6,7 @@ Fastack is a zero-configuration development tool that makes developing client-si
 - Every file in your app directory is implicitly loaded into your Fastack application. Just drop `main.coffee`, `styles.sass` or `my-code.js` somewhere into your app directory and Fastack will load it.
 - Need to install a dependency? `fastack:my-app $ install jquery` will install modules from JSPM
 
+![Package management](docs/img/install.gif)
 
 
 ### Pre-compiler support
