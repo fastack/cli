@@ -41,7 +41,7 @@
     "syncano": "^0.4.5",
     "systemjs": "^0.19.9",
     "through2": "^2.0.0",
-    "vorpal": "^1.4.1",
+    "vorpal": "^1.5.5",
     "vorpal-log": "^1.0.1"
   },
   "bin": {
