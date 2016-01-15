@@ -43,7 +43,8 @@
     "systemjs": "^0.19.9",
     "through2": "^2.0.0",
     "validator": "*",
-    "vorpal": "^1.4.1"
+    "vorpal": "^1.4.1",
+    "walk-sync": "^0.2.6"
   },
   "bin": {
     "fastack": "./bin/fastack"
