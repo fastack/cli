@@ -13,6 +13,10 @@ Fastack is a zero-configuration development tool that makes developing client-si
 - SASS
 - CoffeeScript
 
+### Auto reload on file changes
+Hot module replacement implementation coming soon. See below.
+
+![Package management](docs/img/auto-reload.gif)
 
 ## Quickstart
 ```
