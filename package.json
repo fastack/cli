@@ -24,7 +24,7 @@
     "cheerio": "^0.19.0",
     "chokidar": "^1.4.1",
     "clean-css": "^3.4.8",
-    "cli-table2": "^0.1.9",
+    "cli-table3": "^0.5.0",
     "clui": "^0.3.1",
     "connect": "^3.4.0",
     "console-highlight": "^0.1.0",
